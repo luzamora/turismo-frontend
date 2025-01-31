@@ -1,0 +1,427 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: "Zain", serif;
+    background-color: #fef7e7;
+    color: #fef7e7;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+
+.page-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-container-dondeEstas {
+    flex: 1;
+    align-content: center;
+}
+header {
+    display: flex;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+header h1 {
+    font-family:"Limelight", serif;
+    font-size: 5rem;
+    color:#003049;
+}
+
+.fondoheader {
+
+background-color: #669bbc;
+}
+
+.headerdetalle {
+
+    background-color: #669bbc;
+}
+
+.headerdetalle h1 {
+    flex-grow: 0.8;
+    text-align: center;
+    font-family:"Limelight", serif;
+    font-size: 6rem;
+    color:#003049;
+    background-color: #669bbc
+}
+
+.circuloDetalle {
+    font-family: sans-serif;
+    width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 50%;
+	background: #003049;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+    margin: 2%;
+    padding:2%
+    
+    
+}
+
+.circuloDetalle h2 {
+    font-family: sans-serif;
+	color: #fef7e7;
+	font-size: 1rem;
+	font-weight: bold;
+    
+}
+
+.circulo {
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 50%;
+	background: #003049;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+    margin: 2%;
+    padding:2%
+    
+}
+
+.circulo  h2 {
+	font-family: sans-serif;
+	color: white;
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+h3 {
+    font-family: "Limelight", serif;
+    font-size: 2rem;
+    margin-left: 0px;
+}
+
+
+.info-bar {
+    font-size: 1.2rem;
+    color: #fdf0d5;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #003049;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.info-bar div {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+}
+
+.main-content {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    flex: 1; /* Asegura que ocupa el espacio disponible */
+}
+
+.left-column {
+    flex: 5; /* 70% */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.left-column img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.text-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%; /* Se adapta al ancho de la columna */
+    display: flex; /* Añadido para colocar texto e imagen lado a lado */
+    align-items: center;
+    gap: 20px;
+}
+
+.text-section img {
+    width: 30%; /* Tamaño reducido de la imagen */
+    border-radius: 10px;
+}
+
+.text-section p {
+    flex: 1; /* El texto ocupa el espacio restante */
+    text-align: left; /* Alinea el texto a la izquierda */
+    color: #003049;
+}
+
+.right-column {
+    flex: 2; /* 30% */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.right-column img, 
+.right-column .map-container iframe {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Tarjetas (Bares y Filtros)  Aquí empieza FILTROS*/
+.targeta {
+    background-color: #003049;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    color:#fdf0d5;
+    margin-top: 20px;
+    margin-left: 20px;
+    flex-direction: flex-end;
+    
+}
+
+.targeta h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-align: center;
+    
+}
+
+.imagen-target {
+    width: 100%;
+    height: auto;
+    
+}
+
+.elementos-targeta1{
+    height: 300px;
+    background-color: #669bbc;
+    display: flex;
+    align-items: center; /* Alinea los elementos arriba */
+    justify-content: flex-start;
+    gap: 20px; /* Espacio entre la imagen y la lista */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 100%;
+    flex-direction: flex-end;
+    
+}
+
+.contenedor-cajitas {
+    display: flex;
+    flex-direction: column; /* Apila las cajitas verticalmente */
+    justify-content: center; /* Centra las cajitas verticalmente dentro de su contenedor */
+    align-items: left; /* Centra las cajitas horizontalmente */
+    gap: 10px; /* Espacio entre cada cajita */
+}
+
+
+
+.cajita {
+    
+    color: #fdf0d5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5%;
+    background-color: #003049;
+    align-items: center;
+    padding: 10px;
+    
+
+
+}
+
+.elementos-targeta {
+    display: flex;
+    align-items: flex-start; /* Alinea los elementos arriba */
+    justify-content: center;
+    gap: 20px; /* Espacio entre la imagen y la lista */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.elementos-targeta1 > .imagen-target {
+
+    align-items: left; /* Toma el 50% del espacio disponible */
+    max-width: 50%; 
+    border-radius: 10px;
+    height: 300px;/* Asegura que la imagen no exceda el 50% del contenedor */
+}
+
+.caracteristicas-derecha {
+    flex: 1; /* Toma el 50% del espacio disponible */
+    display: flex;
+    flex-direction: column; /* Los elementos de la lista estarán en una columna */
+    gap: 10px; /* Espacio entre los elementos de la lista */
+}
+
+
+
+
+.caracteristicas-derecha li {
+    
+    list-style: none;
+    font-size: 2rem;
+    color: #fdf0d5;
+}
+/* Filtros */
+.filtros li {
+    margin-bottom: 10px;
+    text-align: center;
+    list-style: none;
+}
+
+.filtros label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.botonFiltros {
+    display: flex;
+    align-items: center; /* Alinea los elementos arriba */
+    justify-content: center;
+    gap: 20px; /* Espacio entre la imagen y la lista */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-family: "Zain", serif;
+    color:#003049;
+    background-color: #669bbc;
+    border-radius: 10px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+}
+
+.botonFiltros:hover {
+    background-color: #acccee; /* Azul más oscuro */
+    transform: scale(1.05); /* Pequeño aumento del botón */
+        
+}
+
+.divBoton {
+
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 15px;
+
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color:#003049;
+    border-top: 1px solid #ccc;
+    
+}
+
+/*Pagina principal*/
+
+.tituloGrande h1 {
+    font-size: 6rem; /* Ajusta el tamaño del título */
+    color: rgba(253,240,213,1); /* Color del texto */
+    margin-bottom: 30px; /* Espaciado debajo del título */
+    text-align: center;
+}
+
+
+/* Fondo con imagen */
+.background-section {
+    width: 100vw;
+    height: 100vw; /* Ocupa el 100% de la altura del viewport */
+    background-image: url("../images/mar.jpeg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Contenedor del dropdown */
+.dropdown-container {
+    background: rgba(253,240,213,1); /* Fondo blanco semitransparente */
+    align-content: left;
+    align-content: center;
+    width: 30vw;
+    height: 4vw;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: inline-block;
+}
+
+select {
+    font-size: 2rem;
+    color: rgba(104,99,88,0.8);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+}
+
+
+.dropdown-container::after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3vw;
+    height: 3vw;
+    background: url('../images/icono-dropdown.png') no-repeat center center;
+    background-size: contain;
+    pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    .background-section {
+        height: 60vh; /* Reduce la altura en pantallas más pequeñas */
+    }
+
+    select {
+        font-size: 0.9rem;
+    }
+}
