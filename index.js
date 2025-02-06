@@ -1,4 +1,13 @@
-const getZonas = () => {
+const zonaHTML = document.getElementById('zonas');
+const zona = zonaHTML.textContent;
+
+const movie = {
+    name: name,
+    year: year
+};
+
+
+const getZonas = (zonaId) => {
   return fetch('http://localhost:3000/zonas')
       .then((response) => {
           if (!response.ok) {
@@ -12,6 +21,7 @@ const getZonas = () => {
       });
   };
 
+  
 
   const getEstablecimientos = (id) => {
   return fetch(`http://localhost:3000/zonas/${id}/establecimientos`)
