@@ -38,3 +38,12 @@ zonas.forEach(zona => {
   list.appendChild(option); // Agregar al select
 });
 };
+
+// HACE REDIRIGIRTE A LOS ESTABLECIENTOS QUE ESTAN DENTRO DE LA ZONA
+
+list.addEventListener("change", function () {
+  const selectedId = list.value; // Obtener el ID de la zona seleccionada
+  if (selectedId) {
+      window.location.href = establecimientos.html?zonaId=${selectedId}; // Redirigir con el ID
+  }
+});
