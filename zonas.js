@@ -37,7 +37,7 @@ const printZonas = (zonas) => {
   // Recorrer el array de zonas y agregarlas como opciones al select
   zonas.forEach(zona => {
     let option = document.createElement('option'); // Crear opción
-    option.value = zona.id; // Puedes usar un ID si lo tienes en la BD
+    option.value = zona._id; // Puedes usar un ID si lo tienes en la BD
     option.textContent = zona.nombre; // Nombre visible de la zona
     list.appendChild(option); // Agregar al select
   });
@@ -45,9 +45,11 @@ const printZonas = (zonas) => {
   // Agregar el event listener después de que el select esté lleno
   list.addEventListener("change", function () {
     const selectedId = list.value; // Obtener el ID de la zona seleccionada
+    const selectedText = list.options[list.selectedIndex].text; // Obtener el nombre visible de la zona
+  
     if (selectedId) {
-      window.location.href = `paginas/filtros.html?zonaId=${selectedId}`; // Redirigir correctamente
+      // Redirigir pasando el nombre y el ID de la zona como parámetros
+      window.location.href = `paginas/filtros.html?zonaId=${selectedId}&zonaName=${encodeURIComponent(selectedText)}`;
     }
   });
 };
-

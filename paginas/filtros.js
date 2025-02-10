@@ -1,52 +1,64 @@
-// carga los productos automáticamente al cargar la página
-
+// Carga los productos automáticamente al cargar la página
 document.addEventListener('DOMContentLoaded', async () => {
-  const establecimientos = await getEstablecimientos();
-  if(establecimientos) {
-    printEstablecimientos(establecimientos);
+  const params = new URLSearchParams(window.location.search);
+  const zonaId = params.get('zonaId');
+  const zonaName = params.get('zonaName'); // Nombre de la zona desde el parámetro de URL
+
+  if (zonaId) {
+    try {
+      // Actualiza el título del h1 dinámicamente
+      const zonaTitle = document.getElementById("zona-title");
+      if (zonaName && zonaTitle) {
+        zonaTitle.textContent = zonaName.toUpperCase();
+      }
+
+      // Obtiene los establecimientos para la zona seleccionada
+      const establecimientos = await getEstablecimientos(zonaId);
+      printEstablecimientos(establecimientos);
+    } catch (error) {
+      console.error("Error al cargar los establecimientos:", error);
+    }
+  } else {
+    console.error("No se recibió zonaId en la URL");
   }
 });
 
-
-
-// para llamar al 1 endpoint
-const getEstablecimientos = async () => {
+// Llama al endpoint para obtener los establecimientos por zona
+const getEstablecimientos = async (zonaId) => {
   try {
-    const response = await fetch('http://localhost:3000/zonas/${id}/establecimientos');
-    if(response.ok) {
+    const response = await fetch(`http://localhost:3000/zonas/${zonaId}/establecimientos`);
+    if (response.ok) {
       return await response.json();
     }
   } catch (error) {
-    console.error('ocurrió un error: ', error.message);
-    throw new Error ('Error al cargar los establecimientos');
+    console.error('Ocurrió un error: ', error.message);
+    throw new Error('Error al cargar los establecimientos');
   }
   throw new Error('Error en la solicitud');
 };
 
-
-//HTML
-
+// Renderiza los establecimientos en el contenedor
 const printEstablecimientos = (establecimientos) => {
   const container = document.querySelector(".left-column");
   container.innerHTML = ""; // Limpiamos antes de agregar nuevos
 
   establecimientos.forEach((establecimiento) => {
-      const card = document.createElement("div");
-      card.classList.add("elementos-targeta1");
+    const card = document.createElement("div");
+    card.classList.add("elementos-targeta1");
 
-      card.innerHTML =
-          <img src="${establecimiento.imagen || '../images/default.jpg'}" alt="Imagen de ${establecimiento.nombre}" class="imagen-target" />
-          <div class="contenedor-cajitas">
-              <div>
-                  <a href="paginadetalle.html?id=${establecimiento.id}" style="color: #FEF7E7">
-                      <h3>${establecimiento.nombre}</h3>
-                  </a>
-              </div>
-              <div class="cajita">${establecimiento.descripcion || 'Sin descripción'}</div>
-              <div class="cajita">Precio: ${establecimiento.precio || 'N/A'}</div>
-              <div class="cajita">Tipo: ${establecimiento.tipo || 'N/A'}</div>
-          </div>
-      ;
-      container.appendChild(card);
+    card.innerHTML = `
+      <img src="${establecimiento.imagen || '../images/default.jpg'}" alt="Imagen de ${establecimiento.nombre}" class="imagen-target" />
+      <div class="contenedor-cajitas">
+        <div>
+          <a href="paginadetalle.html?id=${establecimiento.id}" style="color: #FEF7E7">
+            <h3>${establecimiento.nombre}</h3>
+          </a>
+        </div>
+        <div class="cajita">${establecimiento.descripcion || 'Sin descripción'}</div>
+        <div class="cajita">Precio: ${establecimiento.precio || 'N/A'}</div>
+        <div class="cajita">Tipo: ${establecimiento.tipo || 'N/A'}</div>
+      </div>
+    `;
+    container.appendChild(card);
   });
 };
