@@ -50,7 +50,7 @@ const printEstablecimientos = (establecimientos) => {
 <img src="${establecimiento.imagen}" alt="Imagen de ${establecimiento.name}" class="imagen-target" /> 
       <div class="contenedor-cajitas">
         <div>
-          <a href="paginadetalle.html?id=${establecimiento.id}" style="color: #FEF7E7">
+          <a href="paginadetalle.html?id=${establecimiento._id}" style="color: #FEF7E7">
             <h3>${establecimiento.name}</h3>
           </a>
         </div>

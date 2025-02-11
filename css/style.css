@@ -160,6 +160,7 @@ width: 100%;
 }
 
 .text-section {
+    font-family: "Zain", serif;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
@@ -177,6 +178,7 @@ width: 100%;
 }
 
 .text-section p {
+    font-family: "Zain", serif;
     flex: 1; /* El texto ocupa el espacio restante */
     text-align: left; /* Alinea el texto a la izquierda */
     color: #003049;
