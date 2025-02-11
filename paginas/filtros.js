@@ -47,18 +47,48 @@ const printEstablecimientos = (establecimientos) => {
     card.classList.add("elementos-targeta1");
 
     card.innerHTML = `
-      <img src="${establecimiento.imagen || '../images/default.jpg'}" alt="Imagen de ${establecimiento.nombre}" class="imagen-target" />
+<img src="${establecimiento.imagen}" alt="Imagen de ${establecimiento.name}" class="imagen-target" /> 
       <div class="contenedor-cajitas">
         <div>
           <a href="paginadetalle.html?id=${establecimiento.id}" style="color: #FEF7E7">
-            <h3>${establecimiento.nombre}</h3>
+            <h3>${establecimiento.name}</h3>
           </a>
         </div>
-        <div class="cajita">${establecimiento.descripcion || 'Sin descripción'}</div>
+        <div class="cajita">${establecimiento.direccion || 'Sin descripción'}</div>
         <div class="cajita">Precio: ${establecimiento.precio || 'N/A'}</div>
-        <div class="cajita">Tipo: ${establecimiento.tipo || 'N/A'}</div>
+        <div class="cajita">Tipo: ${establecimiento.dieta || 'N/A'}</div>
       </div>
     `;
     container.appendChild(card);
   });
 };
+
+document.querySelector('.botonFiltros').addEventListener('click', async () => {
+  const params = new URLSearchParams(window.location.search);
+  const zonaId = params.get('zonaId');
+
+  // Obtener valores de los filtros seleccionados
+  const precio = document.getElementById('precio').value;
+  const alergenos = document.getElementById('alergenos').value;
+  const dieta = document.getElementById('dieta').value;
+
+  // Construcción de la URL de consulta con los filtros
+  const queryParams = new URLSearchParams({
+    precioId: precio !== 'seleccione' ? precioId : '',
+    dietaId: dieta !== '-' ? dieta : '',
+    alergenosId: alergenos !== '-' ? alergenos : '',
+  });
+
+  // Petición al backend
+  try {
+    const response = await fetch(`http://localhost:3000/zonas/${zonaId}/establecimientos?${queryParams.toString()}`);
+    if (response.ok) {
+      const establecimientosFiltrados = await response.json();
+      printEstablecimientos(establecimientosFiltrados);
+    } else {
+      console.error("Error al obtener los datos filtrados");
+    }
+  } catch (error) {
+    console.error("Error en la solicitud:", error);
+  }
+});
