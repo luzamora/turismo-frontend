@@ -14,64 +14,40 @@
     <body>
         <header>
             <a href="../index.html" class="circulo"><h2>Atrás</h2></a>
-            <h1 id="zona-title">Cargando zona...</h1>
+            <h1 id="zona-title" class="titulo-filtro">Cargando zona...</h1>
         </header>
         <main class="layout">
-            <div class="main-content">
                 <!-- Columna 1 y 2: Las tarjetas con imagen y lista -->
-                <div class="left-column">
+                <div class="columna-izquierda">
                 </div>
-            </div>
-
             <!-- Columna 3: Los filtros -->
-            <div class="right-column">
+            <div class="columna-izquierda">
                 <div class="targeta">
                     <h3> FILTROS </h3>
                     <div class="elementos-targeta">
                         <ul class="filtros">
                             <li>
-                                <label for="precioMin">Elige precio mínimo</label>
-                                <select name="precioMin" id="precioMin">
-                                    <option value="+0€">seleccione</option>
-                                    <option value="1-10€">10€</option>
-                                    <option value="10-20€">20€</option>
-                                    <option value="20-30€">30€</option>
-                                    <option value="+30€">+30€</option>
+                                <label for="precioSelect">Selecciona Precio</label>
+                                <select name="precio" id="precioSelect">
+                                    <option value="">Seleccione</option>
                                 </select>
                             </li>
                             <li>
-                                <label for="precioMax">Elige precio máximo</label>
-                                <select name="precioMax" id="precioMax">
-                                    <option value="+0€">seleccione</option>
-                                    <option value="1-10€">10€</option>
-                                    <option value="10-20€">20€</option>
-                                    <option value="20-30€">30€</option>
-                                    <option value="+30€">30€</option>
+                                <label for="alergenoSelect">Selecciona Alérgenos</label>
+                                <select name="alergeno" id="alergenoSelect">
+                                    <option value="">Seleccione</option>
                                 </select>
                             </li>
                             <li>
-                                <label for="alérgenos">Selecciona alérgenos</label>
-                                <select name="alérgenos" id="alérgenos">
-                                    <option value="-">seleccione</option>
-                                    <option value="frutos secos">frutos secos</option>
-                                    <option value="marisco">marisco</option>
-                                    <option value="leche">leche</option>
-                                    <option value="gluten">gluten</option>
-                                </select>
-                            </li>
-                            <li>
-                                <label for="dieta">Selecciona tipo dieta</label>
-                                <select name="dieta" id="dieta">
-                                    <option value="-">seleccione</option>
-                                    <option value="vegetariana">vegetariana</option>
-                                    <option value="vegana">vegana</option>
-                                    <option value="flexitariana">flexitariana</option>
+                                <label for="dietaSelect">Selecciona Tipo Dieta</label>
+                                <select name="dieta" id="dietaSelect">
+                                    <option value="">Seleccione</option>
                                 </select>
                             </li>
                         </ul>
                     </div>
                     <div class="divBoton">
-                        <button class="botonFiltros" type="button">Aplicar Filtros</button>
+                        <button class = "botonFiltros" id="filterButton">Filtrar</button>
                     </div>
                 </div>
             </div>

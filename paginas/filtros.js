@@ -39,7 +39,7 @@ const getEstablecimientos = async (zonaId) => {
 
 // Renderiza los establecimientos en el contenedor
 const printEstablecimientos = (establecimientos) => {
-  const container = document.querySelector(".left-column");
+  const container = document.querySelector(".columna-izquierda");
   container.innerHTML = ""; // Limpiamos antes de agregar nuevos
 
   establecimientos.forEach((establecimiento) => {
@@ -63,3 +63,79 @@ const printEstablecimientos = (establecimientos) => {
   });
 };
 
+async function cargarFiltros() {
+  try {
+      // Cargar precios
+      const preciosResponse = await fetch('http://localhost:3000/filtros/precios');
+      const precios = await preciosResponse.json();
+      const precioSelect = document.getElementById('precioSelect');
+      precios.forEach(precio => {
+          const option = document.createElement('option');
+          option.value = precio;
+          option.textContent = precio;
+          precioSelect.appendChild(option);
+      });
+
+      // Cargar dietas
+      const dietasResponse = await fetch('http://localhost:3000/filtros/dietas');
+      const dietas = await dietasResponse.json();
+      const dietaSelect = document.getElementById('dietaSelect');
+      dietas.forEach(dieta => {
+          const option = document.createElement('option');
+          option.value = dieta;
+          option.textContent = dieta;
+          dietaSelect.appendChild(option);
+      });
+
+      // Cargar alérgenos
+      const alergenosResponse = await fetch('http://localhost:3000/filtros/alergenos');
+      const alergenos = await alergenosResponse.json();
+      const alergenoSelect = document.getElementById('alergenoSelect');
+      alergenos.forEach(alergeno => {
+          const option = document.createElement('option');
+          option.value = alergeno;
+          option.textContent = alergeno;
+          alergenoSelect.appendChild(option);
+      });
+
+  } catch (error) {
+      console.error('Error al cargar los filtros:', error);
+  }
+}
+
+cargarFiltros()
+
+// Añade el evento al botón de filtrar
+document.getElementById("filterButton").addEventListener("click", async () => {
+  const precio = document.getElementById("precioSelect").value;
+  const dieta = document.getElementById("dietaSelect").value;
+  const alergeno = document.getElementById("alergenoSelect").value;
+
+  // Obtén el zonaId de la URL
+  const params = new URLSearchParams(window.location.search);
+  const zonaId = params.get("zonaId");
+
+  if (!zonaId) {
+    console.error("No se encontró zonaId en la URL");
+    return;
+  }
+
+  // Construir los parámetros de consulta para la solicitud al backend
+  const queryParams = new URLSearchParams();
+  if (precio) queryParams.append("precioId", precio);
+  if (dieta) queryParams.append("dietaId", dieta);
+  if (alergeno) queryParams.append("alergenosId", alergeno);
+
+  try {
+    // Llama al endpoint con los parámetros del filtro
+    const response = await fetch(`http://localhost:3000/zonas/${zonaId}/establecimientos?${queryParams.toString()}`);
+    if (response.ok) {
+      const filteredEstablecimientos = await response.json();
+      printEstablecimientos(filteredEstablecimientos); // Renderiza los resultados
+    } else {
+      console.error("Error al filtrar los establecimientos:", response.statusText);
+    }
+  } catch (error) {
+    console.error("Error al realizar la solicitud de filtrado:", error);
+  }
+});
