@@ -63,32 +63,3 @@ const printEstablecimientos = (establecimientos) => {
   });
 };
 
-document.querySelector('.botonFiltros').addEventListener('click', async () => {
-  const params = new URLSearchParams(window.location.search);
-  const zonaId = params.get('zonaId');
-
-  // Obtener valores de los filtros seleccionados
-  const precio = document.getElementById('precio').value;
-  const alergenos = document.getElementById('alergenos').value;
-  const dieta = document.getElementById('dieta').value;
-
-  // Construcción de la URL de consulta con los filtros
-  const queryParams = new URLSearchParams({
-    precioId: precio !== 'seleccione' ? precioId : '',
-    dietaId: dieta !== '-' ? dieta : '',
-    alergenosId: alergenos !== '-' ? alergenos : '',
-  });
-
-  // Petición al backend
-  try {
-    const response = await fetch(`http://localhost:3000/zonas/${zonaId}/establecimientos?${queryParams.toString()}`);
-    if (response.ok) {
-      const establecimientosFiltrados = await response.json();
-      printEstablecimientos(establecimientosFiltrados);
-    } else {
-      console.error("Error al obtener los datos filtrados");
-    }
-  } catch (error) {
-    console.error("Error en la solicitud:", error);
-  }
-});
