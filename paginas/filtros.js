@@ -1,4 +1,6 @@
 // Carga los productos automáticamente al cargar la página
+
+
 document.addEventListener('DOMContentLoaded', async () => {
   const params = new URLSearchParams(window.location.search);
   const zonaId = params.get('zonaId');
@@ -37,20 +39,23 @@ const getEstablecimientos = async (zonaId) => {
   throw new Error('Error en la solicitud');
 };
 
-// Renderiza los establecimientos en el contenedor
 const printEstablecimientos = (establecimientos) => {
   const container = document.querySelector(".columna-izquierda");
   container.innerHTML = ""; // Limpiamos antes de agregar nuevos
+
+  const params = new URLSearchParams(window.location.search); // Capturar zonaId y zonaName
+  const zonaId = params.get("zonaId");
+  const zonaName = params.get("zonaName");
 
   establecimientos.forEach((establecimiento) => {
     const card = document.createElement("div");
     card.classList.add("elementos-targeta1");
 
     card.innerHTML = `
-<img src="${establecimiento.imagen}" alt="Imagen de ${establecimiento.name}" class="imagen-target" /> 
+      <img src="${establecimiento.imagen}" alt="Imagen de ${establecimiento.name}" class="imagen-target" /> 
       <div class="contenedor-cajitas">
         <div>
-          <a href="paginadetalle.html?id=${establecimiento._id}" style="color: #FEF7E7">
+          <a href="paginadetalle.html?id=${establecimiento._id}&zonaId=${zonaId}&zonaName=${encodeURIComponent(zonaName)}" style="color: #FEF7E7">
             <h3>${establecimiento.name}</h3>
           </a>
         </div>
@@ -62,6 +67,8 @@ const printEstablecimientos = (establecimientos) => {
     container.appendChild(card);
   });
 };
+
+
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     // Llamar al endpoint de filtros para obtener los valores únicos
