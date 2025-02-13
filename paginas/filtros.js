@@ -1,5 +1,14 @@
 // Carga los productos automáticamente al cargar la página
 
+document.addEventListener("DOMContentLoaded", function () {
+  const btnAtras = document.getElementById("btnAtras");
+  
+  if (btnAtras) {
+      btnAtras.addEventListener("click", function () {
+          window.location.href = "../index.html";
+      });
+  }
+});
 
 document.addEventListener('DOMContentLoaded', async () => {
   const params = new URLSearchParams(window.location.search);
@@ -62,6 +71,8 @@ const printEstablecimientos = (establecimientos) => {
         <div class="cajita">${establecimiento.direccion || 'Sin descripción'}</div>
         <div class="cajita">Precio: ${establecimiento.precio || 'N/A'}</div>
         <div class="cajita">Tipo: ${establecimiento.dieta || 'N/A'}</div>
+        <div class= "verMas"> <a href="paginadetalle.html?id=${establecimiento._id}&zonaId=${zonaId}&zonaName=${encodeURIComponent(zonaName)}">
+      <button class="botonFiltros" >Ver más</button></a><div>
       </div>
     `;
     container.appendChild(card);

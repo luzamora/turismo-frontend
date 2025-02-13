@@ -2,18 +2,21 @@
 <html lang="es">
     <head>
         <meta charset = "utf-8">
-
+        <title>Zonas</title>
         <link rel="stylesheet" href="../css/style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Zain:wght@700&display=swap" rel="stylesheet">
+        <title></title> <!-- Título de la página -->
+        <link rel="icon" href="../images/paella_4900578.png" type="image/x-icon"> 
         <script src= "filtros.js" defer></script>
     </head>
 
     <body>
         <header>
-            <a href="../index.html" class="circulo"><h2>Atrás</h2></a>
+            <button class="circuloDetalle" id="btnAtras"><h2>Atrás</h2></button>
+
             <h1 id="zona-title" class="titulo-filtro">Cargando zona...</h1>
         </header>
         <main class="layout">
@@ -28,19 +31,20 @@
                         <ul class="filtros">
                             <li>
                                 <label for="precioSelect">Selecciona Precio</label>
-                                <select name="precio" id="precioSelect">
-                                    <option value="">Seleccione</option>
+                                <select name="precio" id="precioSelect" class="selectFiltros">
+                                    <option value="">Seleccione
+                                    </option>
                                 </select>
                             </li>
                             <li>
                                 <label for="alergenoSelect">Selecciona Alérgenos</label>
-                                <select name="alergeno" id="alergenoSelect">
+                                <select name="alergeno" id="alergenoSelect" class="selectFiltros">
                                     <option value="">Seleccione</option>
                                 </select>
                             </li>
                             <li>
                                 <label for="dietaSelect">Selecciona Tipo Dieta</label>
-                                <select name="dieta" id="dietaSelect">
+                                <select name="dieta" id="dietaSelect" class="selectFiltros">
                                     <option value="">Seleccione</option>
                                 </select>
                             </li>

@@ -18,8 +18,25 @@ body {
     flex-direction: column;
     min-height: 100%;
 }
-
-
+a{
+ text-decoration: none;
+}
+.selectFiltros {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none; /* Oculta la flecha predeterminada */
+    background: url('../images/icono-dropdown.png') no-repeat right 10px center;
+    background-size: 16px; /* Ajusta el tamaño del icono */
+    cursor: pointer;
+    font-family: "Zain", serif;
+    font-size: 1.8rem;
+    color: #fdf0d5;
+}
+.selectFiltros:focus {
+    background-color: #003049; /* Cambia el color de fondo *//
+}
 .page-container {
     flex: 1;
     display: flex;
@@ -79,6 +96,11 @@ background-color: #669bbc;
     
     
 }
+.circuloDetalle:hover {
+    background-color: #acccee; /* Azul más oscuro */
+    transform: scale(1.05); /* Pequeño aumento del botón */
+        
+}
 
 .circuloDetalle h2 {
     font-family: sans-serif;
@@ -86,27 +108,6 @@ background-color: #669bbc;
 	font-size: 1rem;
 	font-weight: bold;
     
-}
-
-.circulo {
-	width: 0.5rem;
-	height: 0.5rem;
-	border-radius: 50%;
-	background: #003049;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-    margin: 2%;
-    padding:2%
-    
-}
-
-.circulo  h2 {
-	font-family: sans-serif;
-	color: white;
-	font-size: 1rem;
-	font-weight: bold;
 }
 
 h3 {
@@ -222,12 +223,13 @@ width: 100%;
 
 .imagen-target {
     width: 100%;
-    height: auto;
-    
+    height: 100%;
+    object-fit: cover; /* Mantiene la proporción y cubre todo el contenedor */
 }
 
+
 .elementos-targeta1 {
-    height: 300px;
+    height: 100%;
     background-color: #669bbc;
     display: flex;
     align-items: center; /* Alinea los elementos verticalmente */
@@ -246,6 +248,7 @@ width: 100%;
     justify-content: center; /* Centra las cajitas verticalmente dentro de su contenedor */
     align-items: left; /* Centra las cajitas horizontalmente */
     gap: 10px; /* Espacio entre cada cajita */
+    margin: 5%;
 }
 
 
@@ -279,7 +282,7 @@ width: 100%;
     align-items: left; /* Toma el 50% del espacio disponible */
     max-width: 50%; 
     border-radius: 10px;
-    height: 300px;/* Asegura que la imagen no exceda el 50% del contenedor */
+    height: 100%;/* Asegura que la imagen no exceda el 50% del contenedor */
 }
 
 .caracteristicas-derecha {
@@ -309,6 +312,7 @@ width: 100%;
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
+    font-size: 1.5rem;
 }
 
 .botonFiltros {
@@ -320,7 +324,7 @@ width: 100%;
     border-radius: 10px;
     font-family: "Zain", serif;
     color:#003049;
-    background-color: #669bbc;
+    background-color: #fdf0d5;
     border-radius: 10px;
     padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -331,6 +335,11 @@ width: 100%;
     background-color: #acccee; /* Azul más oscuro */
     transform: scale(1.05); /* Pequeño aumento del botón */
         
+}
+
+.verMas {
+    margin-left: 30%;
+    margin-top: 3%;
 }
 
 .divBoton {
@@ -351,21 +360,19 @@ select {
 
 footer {
     text-align: center;
-    margin-top: 20px;
     padding: 10px;
     background-color:#003049;
-    border-top: 1px solid #ccc;
-    
 }
 
 /*Pagina principal*/
 
 .tituloGrande h1 {
-    font-family:"Limelight", serif;
+    font-family: "Limelight", serif;
     font-size: 6rem; /* Ajusta el tamaño del título */
-    color: rgba(253,240,213,1); /* Color del texto */
+    color: rgba(253, 240, 213, 1); /* Color del texto */
     margin-bottom: 30px; /* Espaciado debajo del título */
     text-align: center;
+   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra del texto */
 }
 
 
@@ -401,7 +408,7 @@ select {
     font-family: "Zain", serif;
     font-size: 1.8rem;
     color: rgba(104,99,88,0.8);
-    border: none;
+    border:none;
     background: transparent;
     cursor: pointer;
     outline: none;
@@ -417,7 +424,7 @@ select {
     top: 50%;
     transform: translateY(-50%);
     width: 3vw;
-    height: 3vw;
+    height: 2vw;
     background: url('../images/icono-dropdown.png') no-repeat center center;
     background-size: contain;
     pointer-events: none;
