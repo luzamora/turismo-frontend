@@ -52,9 +52,25 @@ const printEstablecimientos = (establecimientos) => {
   const container = document.querySelector(".columna-izquierda");
   container.innerHTML = ""; // Limpiamos antes de agregar nuevos
 
-  const params = new URLSearchParams(window.location.search); // Capturar zonaId y zonaName
+  const params = new URLSearchParams(window.location.search);
   const zonaId = params.get("zonaId");
   const zonaName = params.get("zonaName");
+
+  // Si no hay establecimientos, mostrar un mensaje
+  if (establecimientos.length === 0) {
+    const noResultsCard = document.createElement("div");
+    noResultsCard.classList.add("elementos-targeta1", "no-resultados");
+
+    noResultsCard.innerHTML = `
+      <div class="contenedor-cajitas">
+        <h3>No se encontraron restaurantes con esos filtros.</h3>
+        <p>Intenta modificar los filtros o buscar en otra zona.</p>
+      </div>
+    `;
+
+    container.appendChild(noResultsCard);
+    return; // Salimos de la función para que no intente renderizar más tarjetas
+  }
 
   establecimientos.forEach((establecimiento) => {
     const card = document.createElement("div");
@@ -71,13 +87,17 @@ const printEstablecimientos = (establecimientos) => {
         <div class="cajita">${establecimiento.direccion || 'Sin descripción'}</div>
         <div class="cajita">Precio: ${establecimiento.precio || 'N/A'}</div>
         <div class="cajita">Tipo: ${establecimiento.dieta || 'N/A'}</div>
-        <div class= "verMas"> <a href="paginadetalle.html?id=${establecimiento._id}&zonaId=${zonaId}&zonaName=${encodeURIComponent(zonaName)}">
-      <button class="botonFiltros" >Ver más</button></a><div>
+        <div class="verMas"> 
+          <a href="paginadetalle.html?id=${establecimiento._id}&zonaId=${zonaId}&zonaName=${encodeURIComponent(zonaName)}">
+            <button class="botonFiltros">Ver más</button>
+          </a>
+        </div>
       </div>
     `;
     container.appendChild(card);
   });
 };
+
 
 
 document.addEventListener('DOMContentLoaded', async () => {

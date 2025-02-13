@@ -59,6 +59,7 @@ header {
     text-align: center;
     margin-left: 12%;
     margin-top: 1%;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -78,7 +79,8 @@ background-color: #669bbc;
     font-family:"Limelight", serif;
     font-size: 6rem;
     color:#003049;
-    background-color: #669bbc
+    background-color: #669bbc;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .circuloDetalle {
@@ -171,6 +173,7 @@ width: 100%;
     display: flex; /* Añadido para colocar texto e imagen lado a lado */
     align-items: center;
     gap: 20px;
+    font-size: 1.3rem;
 }
 
 .text-section img {
@@ -238,35 +241,35 @@ width: 100%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin-top: 20px;
+    padding: 20px; /* Añadido padding para separar el contenido de los bordes */
     width: 100%;  /* Ajusta según lo que necesites */
-      /* Alinea los elementos horizontalmente */
 }
 
 .contenedor-cajitas {
     display: flex;
     flex-direction: column; /* Apila las cajitas verticalmente */
-    justify-content: center; /* Centra las cajitas verticalmente dentro de su contenedor */
-    align-items: left; /* Centra las cajitas horizontalmente */
+    justify-content: flex-start; /* Alinea las cajitas al principio del contenedor */
+    align-items: stretch; /* Alinea las cajitas horizontalmente al tamaño completo */
     gap: 10px; /* Espacio entre cada cajita */
-    margin: 5%;
+    margin: 0%;
+    width: 100%; /* Se ajusta al ancho del contenedor */
+    height: 100%; /* Para que las cajitas se ajusten al contenedor verticalmente */
+    padding: 0px; /* Añadido padding para no tener el contenido pegado a los bordes */
 }
-
-
 
 .cajita {
-    
     color: #fdf0d5;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: flex; /* Usamos flex para alinear el contenido dentro de cada cajita */
+    flex-direction: column; /* Alinea el contenido dentro de la cajita de forma vertical */
+    justify-content: center; /* Centra el contenido dentro de la cajita */
+    align-items: center; /* Centra los elementos horizontalmente dentro de la cajita */
     border-radius: 5%;
     background-color: #003049;
-    align-items: center;
     padding: 10px;
-    
-
-
+    flex: 1; /* Asegura que las cajitas ocupen el mismo tamaño disponible */
+    width: 100%; /* Asegura que cada cajita ocupe todo el ancho de su contenedor */ 
 }
+
 
 .elementos-targeta {
     display: flex;
